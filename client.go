@@ -493,7 +493,7 @@ func (c *client) RemoveRange(ctx context.Context, r *RemoveRangeOp) error {
 	}
 
 	// now convert the client range columns to server side column conditions structure
-	columnConditions, err := convertConditions(r.conditions, re.table)
+	columnConditions, err := ConvertConditions(r.conditions, re.table)
 	if err != nil {
 		return errors.Wrap(err, "RemoveRange")
 	}
@@ -513,7 +513,7 @@ func (c *client) Range(ctx context.Context, r *RangeOp) ([]DomainObject, string,
 	}
 
 	// now convert the client range columns to server side column conditions structure
-	columnConditions, err := convertConditions(r.conditions, re.table)
+	columnConditions, err := ConvertConditions(r.conditions, re.table)
 	if err != nil {
 		return nil, "", errors.Wrap(err, "Range")
 	}
